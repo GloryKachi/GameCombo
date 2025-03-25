@@ -67,7 +67,7 @@ export default function GloryParticles() {
       // Set font properties
       const fontSize = isMobile
         ? Math.min(canvas.width * 0.2, 40)
-        : Math.min(canvas.width * 0.25, 140);
+        : Math.min(canvas.width * 0.25, 100);
       const fontFamily = "Georgia, serif";
       ctx.font = `bold ${fontSize}px ${fontFamily}`;
       ctx.textAlign = "center";
@@ -80,8 +80,16 @@ export default function GloryParticles() {
       ctx.shadowOffsetY = 5;
 
       // Measure text to center it
-      const text = "Glory's Project Combo";
-      const metrics = ctx.measureText(text);
+      const textLine1 = "Glory's Project";
+      const textLine2 = "Combo";
+
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+
+      const lineSpacing = fontSize * 1.2;
+
+      const maxWidth = canvas.width * 0.6;
+      const metrics = ctx.measureText(textLine1);
       const textWidth = metrics.width;
 
       // Fill with gradient
@@ -96,7 +104,9 @@ export default function GloryParticles() {
       ctx.fillStyle = gradient;
 
       // Draw the text
-      ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+      // ctx.fillText(textLine1, canvas.width / 2, canvas.height / 2, maxWidth);
+      ctx.fillText(textLine1, centerX, centerY - lineSpacing / 2);
+      ctx.fillText(textLine2, centerX, centerY + lineSpacing / 2);
 
       // Reset shadow
       ctx.shadowColor = "transparent";

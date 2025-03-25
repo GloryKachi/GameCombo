@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Glory Tetris Game",
-  description: "A tetris game created with v0",
+  title: "Glory Game Project",
+  description: "A combination of games",
   generator: "v0.dev",
 };
 
