@@ -98,10 +98,11 @@ export default function Calculator() {
   const handleCurrencyConvert = () => {
     // In a real app, you would use an API to get current exchange rates
     const rates = {
-      USD: { EUR: 0.85, GBP: 0.74, JPY: 110.14 },
-      EUR: { USD: 1.18, GBP: 0.87, JPY: 129.55 },
-      GBP: { USD: 1.36, EUR: 1.15, JPY: 149.13 },
-      JPY: { USD: 0.0091, EUR: 0.0077, GBP: 0.0067 },
+      USD: { EUR: 0.85, GBP: 0.74, JPY: 110.14, NGN: 461.5 },
+      EUR: { USD: 1.18, GBP: 0.87, JPY: 129.55, NGN: 541.76 },
+      GBP: { USD: 1.36, EUR: 1.15, JPY: 149.13, NGN: 616.77 },
+      JPY: { USD: 0.0091, EUR: 0.0077, GBP: 0.0067, NGN: 3.1 },
+      NGN: { USD: 0.0022, EUR: 0.0018, GBP: 0.0016, JPY: 0.32 },
     };
     const result = parseFloat(convertValue) * rates[convertFrom][convertTo];
     setConvertResult(result.toFixed(2));
@@ -283,6 +284,7 @@ export default function Calculator() {
                         <SelectItem value="EUR">EUR</SelectItem>
                         <SelectItem value="GBP">GBP</SelectItem>
                         <SelectItem value="JPY">JPY</SelectItem>
+                        <SelectItem value="NGN">NGN</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -297,6 +299,7 @@ export default function Calculator() {
                         <SelectItem value="EUR">EUR</SelectItem>
                         <SelectItem value="GBP">GBP</SelectItem>
                         <SelectItem value="JPY">JPY</SelectItem>
+                        <SelectItem value="NGN">NGN</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
