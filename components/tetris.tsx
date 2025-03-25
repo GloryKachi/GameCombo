@@ -98,6 +98,7 @@ export default function Tetris() {
   const [dropTime, setDropTime] = useState(INITIAL_DROP_TIME);
   const [level, setLevel] = useState(1);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [completedRows, setCompletedRows] = useState([]);
   const audioRef = useRef(null);
   const dropInterval = useRef(null);
@@ -283,11 +284,11 @@ export default function Tetris() {
   }, [currentPiece, gameOver, spawnNewPiece]);
 
   useEffect(() => {
-    if (!gameOver) {
+    if (!gameOver && !isPaused) {
       dropInterval.current = setInterval(moveDown, dropTime);
     }
     return () => clearInterval(dropInterval.current);
-  }, [moveDown, gameOver, dropTime]);
+  }, [moveDown, gameOver, dropTime, isPaused]);
 
   useEffect(() => {
     const handleKeyPress = (e) => {
@@ -401,6 +402,9 @@ export default function Tetris() {
         <Button onClick={toggleMusic}>
           <Music className="w-4 h-4 mr-2" />
           {isMusicPlaying ? "Stop Music" : "Play Music"}
+        </Button>
+        <Button className="w-24" onClick={() => setIsPaused((prev) => !prev)}>
+          {isPaused ? "Resume" : "Pause"}
         </Button>
       </div>
       <audio
